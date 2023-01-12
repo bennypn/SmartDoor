@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
@@ -14,6 +13,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 // FirebaseUI. it provides functions to bind, adapt and show
 // database contents in a Recycler View
 public class historyAdapter extends FirebaseRecyclerAdapter<History,historyAdapter.HistorysViewholder> {
+    private String tanggal, name,device;
 
     public historyAdapter(
             @NonNull FirebaseRecyclerOptions<History> options)
@@ -26,7 +26,14 @@ public class historyAdapter extends FirebaseRecyclerAdapter<History,historyAdapt
     onBindViewHolder(@NonNull HistorysViewholder holder,
                      int position, @NonNull History model)
     {
-        
+        tanggal = model.getTimestamp();
+        name = model.getName();
+        device = model.getDevice();
+
+
+        holder.tanggaltv.setText(tanggal);
+        holder.nametv.setText(name);
+        holder.devicetv.setText(device);
 
 
     }
@@ -50,11 +57,13 @@ public class historyAdapter extends FirebaseRecyclerAdapter<History,historyAdapt
     // view (here "History.xml")
     class HistorysViewholder
             extends RecyclerView.ViewHolder {
-        TextView epoch, buyPeraTV,buyPulenTV,sisaPeraTV,sisaPulenTV;
+        TextView tanggaltv, nametv,devicetv;
         public HistorysViewholder(@NonNull View itemView)
         {
             super(itemView);
-
+            tanggaltv = itemView.findViewById(R.id.his_tanggal_tv);
+            nametv = itemView.findViewById(R.id.his_nama_tv);
+            devicetv = itemView.findViewById(R.id.his_device_tv);
         }
     }
 

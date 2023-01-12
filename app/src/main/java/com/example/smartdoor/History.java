@@ -1,25 +1,34 @@
 package com.example.smartdoor;
 
 public class History {
-    private String User;
-    private long Epoch;
+    private String name;
+    private String timestamp;
+    private String device;
 
     public History() {
     }
 
-    public String getUser() {
-        return User;
+    public String getDevice() {
+        return device;
     }
 
-    public void setUser(String user) {
-        User = user;
+    public void setDevice(String device) {
+        this.device = device;
     }
 
-    public long getEpoch() {
-        return Epoch;
+    public String getName() {
+        return name;
     }
 
-    public void setEpoch(long epoch) {
-        Epoch = epoch;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 }
